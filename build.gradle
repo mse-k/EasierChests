@@ -46,7 +46,7 @@ sourceCompatibility = 17
 targetCompatibility = 17
 
 ext.Versions = new Properties()
-Versions.load(file("Versionfiles/mcversion-1.20.4.properties").newReader())
+Versions.load(file("Versionfiles/mcversion-1.20.2.properties").newReader())
 
 archivesBaseName = "easierchests"
 ext.projectVersion = "1.7.1"
@@ -91,27 +91,4 @@ jar {
 
 processResources {
         dependsOn downloadTranslations
-}
-
-import com.modrinth.minotaur.TaskModrinthUpload
-
-modrinth {
-    projectId = 'easierchests'
-    versionName = project.archivesBaseName
-    uploadFile = remapJar
-}
-
-curseforge {
-    apiKey = System.getenv("CURSEFORGE_TOKEN") ?: "0"
-    project {
-        id = '279501'
-        releaseType = 'release'
-        addGameVersion("${Versions['minecraft_version']}")
-        addGameVersion("Java "+targetCompatibility)
-        addGameVersion("Fabric")
-        mainArtifact(remapJar)
-    }
-    options {
-        forgeGradleIntegration = false
-    }
 }
