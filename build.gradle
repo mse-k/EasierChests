@@ -46,7 +46,7 @@ sourceCompatibility = 17
 targetCompatibility = 17
 
 ext.Versions = new Properties()
-Versions.load(file("Versionfiles/mcversion-1.20.2.properties").newReader())
+Versions.load(file("mcversion-1.20.2.properties").newReader())
 
 archivesBaseName = "easierchests"
 ext.projectVersion = "1.7.1"
