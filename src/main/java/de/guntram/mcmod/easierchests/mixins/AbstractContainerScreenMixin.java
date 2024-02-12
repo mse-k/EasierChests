@@ -385,10 +385,6 @@ public abstract class AbstractContainerScreenMixin extends Screen implements Slo
             return true;
         }
         
-        if (EasierChests.getHelperForHandler(handler) != null) {
-            return true;
-        }
-        
         if (!loggedScreenHandlerClass && !handler.getClass().getSimpleName().startsWith("class_")) {    // don't log MC internal classes
             LogManager.getLogger(this.getClass()).info("opening class "+handler.getClass().getSimpleName() + "/" + handler.getClass().getCanonicalName());
             loggedScreenHandlerClass = true;
