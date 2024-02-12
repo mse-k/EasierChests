@@ -219,7 +219,7 @@ public abstract class AbstractContainerScreenMixin extends Screen implements Slo
             cir.cancel();
             return;
         }
-        if (mouseButton==2 &&  checkForToggleFrozen(mouseX, mouseY)) {
+        if (mouseButton==2 && hasAltDown() && checkForToggleFrozen(mouseX, mouseY)) {
             cir.setReturnValue(true);
             cir.cancel();
             return;
