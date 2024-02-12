@@ -34,7 +34,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import de.guntram.mcmod.easierchests.storagemodapi.ChestGuiInfo;
 import net.minecraft.text.Text;
 
 @Mixin(HandledScreen.class)
@@ -406,13 +405,6 @@ public abstract class AbstractContainerScreenMixin extends Screen implements Slo
     public int getSlotRowCount() {
         int size = handler.slots.size() - PLAYERSLOTS;
         if (ConfigurationHandler.allowExtraLargeChests()) {
-            ChestGuiInfo helper = EasierChests.getHelperForHandler(handler);
-            if (helper != null) {
-                int cols = helper.getRows(handler);
-                if (cols != -1) {
-                    return cols;
-                }
-            }
             return size / getSlotColumnCount();
         }
         return Math.min(6, size/PLAYERINVCOLS);
@@ -421,13 +413,6 @@ public abstract class AbstractContainerScreenMixin extends Screen implements Slo
     public int getSlotColumnCount() {
         int size = handler.slots.size() - PLAYERSLOTS;
         if (ConfigurationHandler.allowExtraLargeChests()) {
-            ChestGuiInfo helper = EasierChests.getHelperForHandler(handler);
-            if (helper != null) {
-                int rows = helper.getColumns(handler);
-                if (rows != -1) {
-                    return rows;
-                }
-            }
             return (size <= 81 ? PLAYERINVCOLS : size/PLAYERINVCOLS);
         }
         return PLAYERINVCOLS;
